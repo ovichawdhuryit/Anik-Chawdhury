@@ -208,15 +208,35 @@
 
     /* MOBILE */
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      #hero { flex-direction: column; padding: 6rem 1.5rem 3rem; align-items: flex-start; }
-      .hero-right { align-items: flex-start; width: 100%; }
-      .hero-photo { width: 160px; height: 190px; }
-      section { padding: 4rem 1.5rem; }
-      #skills { padding: 4rem 1.5rem; }
-      .project-card { grid-template-columns: 1fr; }
-    }
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  #hero {
+    flex-direction: column;
+    padding: 5rem 1.5rem 3rem;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .hero-content { max-width: 100%; }
+  .hero-right {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+  }
+  .hero-photo {
+    width: 120px;
+    height: 140px;
+  }
+  .hero-contacts { align-items: flex-start; }
+  h1.hero-name { font-size: 3rem; }
+  section { padding: 3rem 1.5rem; }
+  #skills { padding: 3rem 1.5rem; }
+  #publications, #achievements, #contact { padding: 3rem 1.5rem !important; }
+  .project-card { grid-template-columns: 1fr; }
+  .ach-grid { grid-template-columns: 1fr 1fr; }
+  .cert-list { grid-template-columns: 1fr; }
+}
   </style>
 </head>
 <body>
