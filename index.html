@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anik Chawdhury — EEE & AI Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0a0c10;
@@ -13,13 +13,28 @@
       --bg3: #141820;
       --card: #131720;
       --border: #1e2530;
-      --accent: #00e5ff;
+      --accent: #00b8cc;
       --accent2: #7c3aed;
       --accent3: #10b981;
       --text: #e2e8f0;
       --muted: #64748b;
+      --nav-bg: rgba(10,12,16,.85);
       --mono: 'Space Mono', monospace;
       --sans: 'Syne', sans-serif;
+    }
+
+    html.light {
+      --bg: #f4f6f9;
+      --bg2: #eaecf2;
+      --bg3: #dde1ea;
+      --card: #ffffff;
+      --border: #d1d9e6;
+      --accent: #0077aa;
+      --accent2: #6d28d9;
+      --accent3: #059669;
+      --text: #0f172a;
+      --muted: #64748b;
+      --nav-bg: rgba(244,246,249,.9);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -53,7 +68,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.1rem 3rem;
-      background: rgba(10,12,16,.85);
+      background: var(--nav-bg);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
@@ -225,6 +240,7 @@
     .contact-link {
       font-family: var(--mono);
       font-size: .7rem;
+      font-weight: 500;
       color: var(--muted);
       text-decoration: none;
       letter-spacing: .08em;
@@ -672,6 +688,7 @@
 <nav>
   <a class="nav-logo" href="#">AC<span style="color:var(--muted)">// EEE & AI</span></a>
   <ul class="nav-links">
+
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -680,6 +697,18 @@
     <li><a href="#achievements">Achievements</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button id="theme-toggle" onclick="toggleTheme()" title="Toggle theme" style="
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: .8rem;
+    padding: .45rem .9rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all .2s;
+    letter-spacing: .05em;
+  ">☀ Light</button>
 </nav>
 
 <!-- HERO -->
@@ -1058,6 +1087,19 @@
 </footer>
 
 <script>
+  // Theme toggle
+  const btn = document.getElementById('theme-toggle');
+  function toggleTheme() {
+    const isLight = document.documentElement.classList.toggle('light');
+    btn.textContent = isLight ? '🌙 Dark' : '☀ Light';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  }
+  // Restore saved theme
+  if (localStorage.getItem('theme') === 'light') {
+    document.documentElement.classList.add('light');
+    btn.textContent = '🌙 Dark';
+  }
+
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
